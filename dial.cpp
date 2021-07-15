@@ -1,22 +1,42 @@
 ﻿#include <stdio.h>
 #include <iostream>
-#include <vector>
+
 #include <string>
 using namespace std;
 
-int main() {
-	vector <string> v1;
-	string dial;
-	//cin >> dial;
-	v1.push_back("ABC");
-	v1.push_back("DEF");
-	v1.push_back("GHI");
-	v1.push_back("JKL");
-	v1.push_back("MNO");
-	v1.push_back("PQRS");
-	v1.push_back("WXYZ");
-
-	cout << v1[0];
+int main(void) {
 	
+	string ch;
+	int alpha[26] = { 0, }; //char to ok!
+	
+	int result = 0,dial;
+	cin >> ch;
+
+	for (char e : ch) {
+		alpha[e - 'A']++;
+	}
+
+	for (int i = 0; i <= 'Z' - 'A'; i++) {
+		
+	
+		if (i == 'V' - 'A' || i == 'S' - 'A') {
+			result +=( i / 3 + 2)*alpha[i];
+			continue;
+		}
+
+		if (alpha[i]) {
+			dial = i / 3 + 3;
+			if (dial > 9) {
+				result += 10 * alpha[i];
+			}
+			else {
+				result += dial * alpha[i];
+			}
+		}
+		
+	}
+	cout << result << endl;
+	return 0;
+
 	
 }
