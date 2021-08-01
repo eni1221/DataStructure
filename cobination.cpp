@@ -8,7 +8,7 @@ using namespace std;
 int solution(int k, int m) {
 	int answer = -1;
 	vector<int> n;
-	vector<int>y;
+
 	answer = 0;
 	for (int i = 1; i <= k; i++) {
 		n.push_back(i);
@@ -16,13 +16,11 @@ int solution(int k, int m) {
 	do {
 		string hi;
 		for (int i = 0; i < n.size(); i++) {
-			string r = to_string(n[i]);
-			hi.append(r);
+			cout << n[i];
 		}
-		y.push_back(stoi(hi));
+		
 	} while (next_permutation(n.begin(), n.end()));
 
-	
 
 	return answer;
 }
