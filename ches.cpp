@@ -1,5 +1,5 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
-#include <string.h>
+#include <string>
 #include <stdio.h>
 #include <iostream>
 using namespace std;
@@ -11,41 +11,71 @@ int M, N;
 string board[MAX];
 
 string whiteFirst[8] = {
-	{"WBWBWBWB"},
-	{"BWBWBWBW"},
-	{"WBWBWBWB"},
-	{"BWBWBWBW"},
-	{"WBWBWBWB"},
-	{"BWBWBWBW"},
-	{"WBWBWBWB"},
-	{"BWBWBWBW"}
+	  { "WBWBWBWB" },
+
+		{ "BWBWBWBW" },
+
+		{ "WBWBWBWB" },
+
+		{ "BWBWBWBW" },
+
+		{ "WBWBWBWB" },
+
+		{ "BWBWBWBW" },
+
+		{ "WBWBWBWB" },
+
+		{ "BWBWBWBW" }
+
+
+
+
 };
 string blackFirst[8] = {
-	{"WBWBWBWB"},
-	{"BWBWBWBW"},
-	{"WBWBWBWB"},
-	{"BWBWBWBW"},
-	{"WBWBWBWB"},
-	{"BWBWBWBW"},
-	{"WBWBWBWB"},
-	{"BWBWBWBW"}
+	{ "BWBWBWBW" },
+
+		{ "WBWBWBWB" },
+
+		{ "BWBWBWBW" },
+
+		{ "WBWBWBWB" },
+
+		{ "BWBWBWBW" },
+
+		{ "WBWBWBWB" },
+
+		{ "BWBWBWBW" },
+
+		{ "WBWBWBWB" }
+
+
+
+
 };
 
 int whiteFirstChange(int y, int x) {
 	int cnt = 0;
-	for (int i = y; i < y + 8; i++)
-		for (int j = x; j < x + 8; j++)
-			if (board[i][j] != whiteFirst[i - y][j - x])
+	for (int i = y; i < y + 8; i++) {
+		for (int j = x; j < x + 8; j++) {
+			if (board[i][j] != whiteFirst[i - y][(j - x)]) {
 				cnt++;
+			}
+		}
+
+	}
 	return cnt;
 }
 
 int blackFirstChange(int y, int x) {
 	int cnt = 0;
-	for (int i = y; i < y + 8; i++)
-		for (int j = x; j < x + 8; j++)
-			if (board[i][j] != blackFirst[i - y][j - x])
+	for (int i = y; i < y + 8; i++) {
+		for (int j = x; j < x + 8; j++) {
+			if (board[i][j] != blackFirst[i - y][(j - x)]) {
+
 				cnt++;
+			}
+		}
+	}
 	return cnt;
 }
 
@@ -59,10 +89,12 @@ int main() {
 	}
 	int result = INF;
 
-	for (int i = 0; i + 7 < N; i++)
-		for (int j = 0; j + 7 < M; j++)
+	for (int i = 0; i + 7 < N; i++) {
+		for (int j = 0; j + 7 < M; j++) {
 			result = min(result, min(whiteFirstChange(i, j), blackFirstChange(i, j)));
+		}
 
+	}
 	cout << result <<endl;
 
 
